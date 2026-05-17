@@ -1,4 +1,4 @@
 .venv/
-FedMGP/logs/
+# FedMGP/logs/
 FedMGP/output/
 FedMGP/**/__pycache__/

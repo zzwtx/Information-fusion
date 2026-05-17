@@ -1,0 +1,16 @@
+DATA_ROOT=/home/xsf/Information-fusion/FedMGP/DATA
+SHOTS=16
+CFG_FILE=base2novel_vit_b16
+BASE_METHOD=baseline
+BASE_RUN_TAG=_nctx4
+EXP_METHOD=TCVP-FedAdam
+EXP_RUN_TAG=_nctx4_tcvp_fedadam
+EXP_OPTS=TRAINER.FEDMGP.TCVP_ENABLED True TRAINER.FEDMGP.TCVP_ALPHA 0.3 TRAINER.FEDMGP.TCVP_HIDDEN_DIM 32 TRAINER.FEDMGP.TCVP_USE_ALIGN_LOSS False TRAINER.FEDMGP.TCVP_REG_WEIGHT 0.0 TRAINER.FEDMGP.TCVP_AGGREGATE_META_NET True TRAINER.FEDMGP.TCVP_META_AGGREGATION fedadam
+DATASETS=stanford_cars
+GPU 0 queue: stanford_cars:baseline
+GPU 1 queue: stanford_cars:experiment
+SKIP_DONE=true
+DRY_RUN=false
+SUMMARY_TSV=/home/xsf/Information-fusion/FedMGP/logs/quick_param_comparison_tcvp_fedadam_20260515_043754/summary.tsv
+SUMMARY_MD=/home/xsf/Information-fusion/FedMGP/logs/quick_param_comparison_tcvp_fedadam_20260515_043754/summary.md
+python=/home/xsf/Information-fusion/.venv/bin/python

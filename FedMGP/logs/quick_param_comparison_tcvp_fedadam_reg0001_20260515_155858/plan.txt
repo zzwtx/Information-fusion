@@ -1,0 +1,16 @@
+DATA_ROOT=/home/xsf/Information-fusion/FedMGP/DATA
+SHOTS=16
+CFG_FILE=base2novel_vit_b16
+BASE_METHOD=baseline
+BASE_RUN_TAG=_nctx4
+EXP_METHOD=TCVP-FedAdam-reg0001
+EXP_RUN_TAG=_nctx4_tcvp_fedadam_reg0001
+EXP_OPTS=TRAINER.FEDMGP.TCVP_ENABLED True TRAINER.FEDMGP.TCVP_ALPHA 0.3 TRAINER.FEDMGP.TCVP_HIDDEN_DIM 32 TRAINER.FEDMGP.TCVP_USE_ALIGN_LOSS False TRAINER.FEDMGP.TCVP_REG_WEIGHT 0.001 TRAINER.FEDMGP.TCVP_AGGREGATE_META_NET True TRAINER.FEDMGP.TCVP_META_AGGREGATION fedadam
+DATASETS=caltech101 dtd oxford_pets oxford_flowers eurosat
+GPU 0 queue: caltech101:baseline dtd:experiment oxford_pets:baseline oxford_flowers:experiment eurosat:baseline
+GPU 1 queue: caltech101:experiment dtd:baseline oxford_pets:experiment oxford_flowers:baseline eurosat:experiment
+SKIP_DONE=true
+DRY_RUN=false
+SUMMARY_TSV=/home/xsf/Information-fusion/FedMGP/logs/quick_param_comparison_tcvp_fedadam_reg0001_20260515_155858/summary.tsv
+SUMMARY_MD=/home/xsf/Information-fusion/FedMGP/logs/quick_param_comparison_tcvp_fedadam_reg0001_20260515_155858/summary.md
+python=/home/xsf/Information-fusion/.venv/bin/python

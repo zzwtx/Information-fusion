@@ -1,0 +1,12 @@
+| Dataset | Method | Local | Base | Novel | HM | CM |
+|---|---:|---:|---:|---:|---:|---:|
+| caltech101 | baseline | 98.4475 | 96.7592 | 93.8974 | 95.3068 | 96.8772 |
+| caltech101 | TCVP-FedAdam-a03-reg0001-slowlr | 98.8718 | 96.8625 | 94.6070 | 95.7215 | 97.2966 |
+| dtd | baseline | 92.2685 | 52.0949 | 59.4686 | 55.5381 | 73.9033 |
+| dtd | TCVP-FedAdam-a03-reg0001-slowlr | 91.1574 | 54.6181 | 59.3478 | 56.8848 | 74.0211 |
+| oxford_pets | baseline | 98.3303 | 91.6108 | 97.0470 | 94.2506 | 96.2904 |
+| oxford_pets | TCVP-FedAdam-a03-reg0001-slowlr | 97.7830 | 92.3817 | 97.1756 | 94.7180 | 96.2505 |
+| oxford_flowers | baseline | 98.7310 | 69.1928 | 71.0567 | 70.1124 | 84.4217 |
+| oxford_flowers | TCVP-FedAdam-a03-reg0001-slowlr | 98.5461 | 70.2659 | 73.2766 | 71.7397 | 85.1429 |
+| eurosat | baseline | 49.3333 | 49.8810 | 54.7128 | 52.1853 | 50.7593 |
+| eurosat | TCVP-FedAdam-a03-reg0001-slowlr | 49.1956 | 52.4643 | 59.4846 | 55.7543 | 52.4750 |
