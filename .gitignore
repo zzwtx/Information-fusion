@@ -1,2 +1,4 @@
-FedMGP/
 .venv/
+FedMGP/logs/
+FedMGP/output/
+FedMGP/**/__pycache__/

@@ -1,0 +1,84 @@
+# Ignore all .a files
+*.a
+
+# But keep lib.a
+!lib.a
+
+# Ignore TODO files (case insensitive)
+[Tt][Oo][Dd][Oo]
+
+# Ignore all .log files
+*.log
+
+# Ignore macOS system files
+.DS_Store
+
+# Ignore Node.js dependencies
+node_modules/
+
+# Ignore Python bytecode
+__pycache__/
+*.py[cod]
+
+# Ignore Java compiled files
+*.class
+
+# Ignore backup files
+*~
+
+# Ignore IDE settings
+.vscode/
+.idea/
+*.sublime-workspace
+
+# Ignore build output
+build/
+dist/
+
+# Ignore environment config files
+.env
+.env.local
+
+# Ignore Python virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Ignore Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Ignore PyTorch weights and checkpoints
+*.pth
+*.ckpt
+
+# Ignore dataset directories
+DATA/
+data/
+
+# Project specific ignores
+output/
+*.pt
+cache/
+standard_output
+coop_output
+motivation_output
+output2/
+
+# Ignore NFS temp files
+.nfs*
+
+# Ignore inference results
+inference_results/
+
+# Ignore subprojects
+prompt_group/
+PromptFolio/
+pFedMoAP/
+
+# Ignore docs and reference code
+doc/refcode/
+
+# Ignore Claude Code config
+CLAUDE.md

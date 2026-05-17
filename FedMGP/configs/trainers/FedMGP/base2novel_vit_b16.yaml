@@ -1,0 +1,88 @@
+DATALOADER:
+  TRAIN_X:
+    BATCH_SIZE: 8
+  TEST:
+    BATCH_SIZE: 100
+  NUM_WORKERS: 16
+
+INPUT:
+  SIZE: (224, 224)
+  INTERPOLATION: "bicubic"
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+  TRANSFORMS: ["random_resized_crop", "random_flip", "normalize"]
+
+OPTIM:
+  NAME: "sgd"
+  LR: 0.001
+  LR_SCHEDULER: "single_step"
+  ROUND: 10  # global rounds
+  MAX_EPOCH: 2  # local epochs
+  WARMUP_EPOCH: 0
+  WARMUP_TYPE: "constant"
+  WARMUP_CONS_LR: 1e-5
+  GAMMA: 1
+
+TRAIN:
+  PRINT_FREQ: 5
+
+MODEL:
+  BACKBONE:
+    NAME: "ViT-B/16"
+    PRETRAINED: True
+
+DATASET:
+  SUBSAMPLE_CLASSES: "base"  # all, base or new
+  USERS: 10
+  IID: False
+  FRAC: 1.0
+  PARTITION: "noniid-labeldir"
+  USEALL: False  # use all data instead of few-shot
+  NUM_SHOTS: 4
+  BETA: 0.3
+  REPEATRATE: 0.0
+  IMBALANCE_TRAIN: False  # add label skew to feature skew
+  SPLIT_CLIENT: False  # split one domain to multi clients
+
+TRAINER:
+  FEDMGP:
+    N_CTX_VISION: 2  # vision prompt length
+    N_CTX_TEXT: 4  # text prompt length
+    NUM_PROMPTS_VISION: 5  # number of vision prompts
+    NUM_PROMPTS_TEXT: 5  # number of text prompts
+    CTX_INIT: "a photo of a"
+    PREC: "fp16"  # fp16, fp32, amp
+    PROMPT_DEPTH_VISION: 1  # 1 for shallow prompting only
+    PROMPT_DEPTH_TEXT: 1  # 1 for shallow prompting only
+    USE_DIVERGENT_LOSS: True
+    DIVERGENT_LOSS_WEIGHT: 1.0
+    TOPK: 2  # top-k prompts for aggregation
+    AGGREGATE_HIGHEST_SIM: True  # True for highest similarity
+    SELECT_MODE: "similarity"  # similarity, random, top_fixed, all
+    INFERENCE_MODE: "average"  # average, selected_group, max_logits, feature_average
+    SELECTED_PROMPT_GROUP: 0  # used when INFERENCE_MODE=selected_group
+    PROBABILISTIC_SELECTION: True  # probabilistic selection based on similarity
+    TEMPERATURE: 1.0  # softmax temperature, higher = smoother
+    DIVERGENT_LOSS_TYPE: "l1"  # cos, l1, l2
+    GROUP_BIND_SELECTION: False  # True: rank text/vision prompts as bound groups
+    GROUP_BIND_TEXT_WEIGHT: 0.5
+    GROUP_BIND_VISION_WEIGHT: 0.5
+    SLOT_AGGREGATION: False  # True: aggregate and dispatch selected prompts by matched global slots
+    SLOT_ASSIGN_HIGHEST_SIM: True
+    SLOT_MIN_PROMPTS_PER_SLOT: 1
+    SLOT_KEEP_EMPTY_PROMPTS: True
+    TCVP_ENABLED: False  # True: generate residual visual prompts from pooled text prompts
+    TCVP_HIDDEN_DIM: 256
+    TCVP_INPUT_NORM: "layernorm"  # none, layernorm
+    TCVP_ALPHA: 0.1
+    TCVP_DETACH_TEXT_CONDITION: False
+    TCVP_USE_ALIGN_LOSS: True
+    TCVP_ALIGN_LOSS_WEIGHT: 0.1
+    TCVP_REG_WEIGHT: 0.001
+    TCVP_AGGREGATE_META_NET: True  # True: FedAvg Meta-Net params; False: keep Meta-Net client-local
+    TCVP_META_AGGREGATION: "fedavg"  # fedavg, fedadam
+    TCVP_META_FEDADAM_LR: 0.001
+    TCVP_META_FEDADAM_BETA1: 0.9
+    TCVP_META_FEDADAM_BETA2: 0.999
+    TCVP_META_FEDADAM_TAU: 0.001
+    TCVP_META_FEDADAM_BIAS_CORRECTION: True
